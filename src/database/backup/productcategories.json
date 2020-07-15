@@ -1,0 +1,8 @@
+[{"id":1, "name":"Legumes", "created_at":"2020-05-05 16:58:40", "updated_at":"2020-05-05 16:58:40"},
+ {"id":4, "name":"Frutas", "created_at":"2020-05-05 17:12:28", "updated_at":"2020-06-19 11:06:48"},
+ {"id":5, "name":"Queijos", "created_at":"2020-05-05 17:21:56", "updated_at":"2020-05-05 17:21:56"},
+ {"id":6, "name":"Charcutaria", "created_at":"2020-05-05 17:21:56", "updated_at":"2020-05-05 17:21:56"},
+ {"id":7, "name":"Padaria e Pastelaria", "created_at":"2020-05-05 17:21:56", "updated_at":"2020-05-05 17:21:56"},
+ {"id":9, "name":"Talho", "created_at":"2020-05-05 17:21:56", "updated_at":"2020-05-05 17:21:56"},
+ {"id":10, "name":"Peixaria", "created_at":"2020-05-05 17:21:56", "updated_at":"2020-05-05 17:21:56"},
+ {"id":14, "name":"Ovos", "created_at":"2020-06-19 17:58:53", "updated_at":"2020-06-21 01:12:28"}]
