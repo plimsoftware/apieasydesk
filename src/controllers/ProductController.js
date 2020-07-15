@@ -1,7 +1,5 @@
 import Product from '../models/Product';
 import ProdCat from '../models/ProdCat';
-import Photo from '../models/Photo';
-import Stock from '../models/Stock';
 
 class ProductController {
   // Store
@@ -65,18 +63,6 @@ class ProductController {
             where: {
               category_id: req.query.catid,
             },
-            include: [
-              {
-                model: Photo,
-                attributes: ['url', 'filename'],
-              },
-              {
-                model: Stock,
-                as: 'myStock',
-                attributes: ['total', 'store', 'warehouse', 'expedition'],
-                where: whereStatement,
-              },
-            ],
           });
           return res.json(product);
         }
@@ -88,17 +74,6 @@ class ProductController {
             category_id: req.query.catid,
             visible: true,
           },
-          include: [
-            {
-              model: Photo,
-              attributes: ['url', 'filename'],
-            },
-            {
-              model: Stock,
-              as: 'myStock',
-              attributes: ['store'],
-            },
-          ],
         });
         return res.json(product);
       }
@@ -111,17 +86,6 @@ class ProductController {
             id: req.query.list,
             visible: true,
           },
-          include: [
-            {
-              model: Photo,
-              attributes: ['url', 'filename'],
-            },
-            {
-              model: Stock,
-              as: 'myStock',
-              attributes: ['store'],
-            },
-          ],
         });
         return res.json(product);
       }
@@ -135,18 +99,6 @@ class ProductController {
           attributes: ['id', 'name', 'price', 'priceunit', 'tax', 'discount', 'visible', 'weight', 'cart_desc', 'short_desc',
             'long_desc', 'category_id'],
           order: [['name', 'ASC']],
-          include: [
-            {
-              model: Photo,
-              attributes: ['url', 'filename'],
-            },
-            {
-              model: Stock,
-              as: 'myStock',
-              attributes: ['total', 'store', 'warehouse', 'expedition'],
-              where: whereStatement,
-            },
-          ],
         });
         return res.json(product);
       }
@@ -157,17 +109,6 @@ class ProductController {
         where: {
           visible: true,
         },
-        include: [
-          {
-            model: Photo,
-            attributes: ['url', 'filename'],
-          },
-          {
-            model: Stock,
-            as: 'myStock',
-            attributes: ['store'],
-          },
-        ],
       });
       return res.json(product);
     } catch (e) {
@@ -183,10 +124,6 @@ class ProductController {
           attributes: ['id', 'name', 'price', 'priceunit', 'tax', 'discount', 'visible', 'weight', 'cart_desc', 'short_desc',
             'long_desc', 'category_id'],
           order: [['name', 'ASC']],
-          include: {
-            model: Photo,
-            attributes: ['url', 'filename'],
-          },
         });
 
         return res.json({ product });
@@ -197,10 +134,6 @@ class ProductController {
         order: [['name', 'ASC']],
         where: {
           visible: true,
-        },
-        include: {
-          model: Photo,
-          attributes: ['url', 'filename'],
         },
       });
 

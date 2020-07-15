@@ -6,9 +6,9 @@ class UserController {
     try {
       const novoUser = await User.create(req.body);
       const {
-        id, nome, email,
+        user, name, profile,
       } = novoUser;
-      return res.json({ id, nome, email });
+      return res.json({ user, name, profile });
     } catch (e) {
       return res.status(400).json({ errors: e.name });
     }
@@ -17,7 +17,7 @@ class UserController {
   // Index
   async index(req, res) {
     try {
-      const users = await User.findAll({ attributes: ['id', 'nome', 'email'] });
+      const users = await User.findAll({ attributes: ['user', 'name', 'profile'] });
       return res.json(users);
     } catch (e) {
       return res.json(null);

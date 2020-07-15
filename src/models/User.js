@@ -4,25 +4,33 @@ import bcryptjs from 'bcryptjs';
 export default class User extends Model {
   static init(sequelize) {
     super.init({
-      nome: {
+      name: {
         type: Sequelize.STRING,
         defaultValue: '',
         validate: {
           len: {
             args: [3, 255],
-            msg: 'Nome deve ter entre 3 a 255 caracteres',
+            msg: 'Name must be between 3 and 255 characters',
           },
         },
       },
-      email: {
+      user: {
         type: Sequelize.STRING,
         defaultValue: '',
-        unique: {
-          msg: 'Este e-mail já existe',
-        },
         validate: {
-          isEmail: {
-            msg: 'E-mail inválido',
+          len: {
+            args: [3, 100],
+            msg: 'User must be between 3 and 255 characters',
+          },
+        },
+      },
+      profile: {
+        type: Sequelize.STRING,
+        defaultValue: '',
+        validate: {
+          len: {
+            args: [3, 100],
+            msg: 'Profile must be between 3 and 100 characters',
           },
         },
       },
@@ -31,19 +39,16 @@ export default class User extends Model {
         defaultValue: '',
       },
       password: {
-        type: Sequelize.VIRTUAL, // Este campo só existe aqui e não na BD
+        type: Sequelize.VIRTUAL,
         defaultValue: '',
         validate: {
           len: {
             args: [6, 50],
-            msg: 'A password deve ter entre 6 a 50 caracteres',
+            msg: 'Password must be between 6 and 50 characters',
           },
         },
       },
-      admin: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
-      },
+
     }, {
       sequelize,
       tableName: 'users',

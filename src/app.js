@@ -14,18 +14,10 @@ import userRoutes from './routes/userRoutes';
 import tokenRoutes from './routes/tokenRoutes';
 import prodCatRoutes from './routes/prodCatRoutes';
 import productRoutes from './routes/productRoutes';
-import photoRoutes from './routes/photoRoutes';
 import clientRoutes from './routes/clientRoutes';
-import orderRoutes from './routes/orderRoutes';
-import orderdetailRoutes from './routes/orderdetailRoutes';
-import stockRoutes from './routes/stockRoutes';
-import portfolioRoutes from './routes/portfolioRoutes';
 
 const whitelist = [
-  'https://store.plimsoftware.pt',
-  'https://storeapi.plimsoftware.pt',
-  'http://localhost:3000',
-  'https://www.plimsoftware.pt',
+  '*',
 ];
 
 const corsOptions = {
@@ -59,13 +51,7 @@ class App {
     this.app.use('/prodcat/', prodCatRoutes);
     this.app.use('/tokens/', tokenRoutes);
     this.app.use('/product/', productRoutes);
-    this.app.use('/photos/', photoRoutes);
     this.app.use('/clients/', clientRoutes);
-    this.app.use('/order/', orderRoutes);
-    this.app.use('/orderdetail/', orderdetailRoutes);
-    this.app.use('/stock/', stockRoutes);
-
-    this.app.use('/message/', portfolioRoutes); // Route Used in Portfolio
   }
 }
 

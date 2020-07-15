@@ -14,27 +14,28 @@ export default async (req, res, next) => {
 
   try {
     const dados = jwt.verify(token, process.env.TOKEN_SECRET);
-    const { id, email, userType } = dados;
+    const { user, name, profile } = dados;
     // Para validar se alterou o email. Se sim, precisa de novo token
-    const client = await User.findOne({
+    const myUser = await User.findOne({
       where: {
-        id,
-        email,
+        user,
+        name,
       },
     });
 
-    if (!client || userType !== 'admin') {
+    if (!myUser) {
       return res.status(401).json({
-        errors: ['User inválido.'],
+        errors: ['User invalid.'],
       });
     }
 
-    req.userId = id;
-    req.userEmail = email;
+    req.userUser = user;
+    req.userName = name;
+    req.userProfile = profile;
     return next();
   } catch (e) {
     return res.status(401).json({
-      errors: ['Token expirado ou inválido.'],
+      errors: ['Token expired or invalid.'],
     });
   }
 };

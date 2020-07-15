@@ -1,6 +1,6 @@
 class HomeController {
   async index(req, res) {
-    res.json('OnlineStore API');
+    res.json('Easy Desk API');
   }
 }
 
