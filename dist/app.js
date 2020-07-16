@@ -18,7 +18,7 @@ var _productRoutes = require('./routes/productRoutes'); var _productRoutes2 = _i
 var _clientRoutes = require('./routes/clientRoutes'); var _clientRoutes2 = _interopRequireDefault(_clientRoutes);
 
 const whitelist = [
-  'http://localhost:3002',
+  'http://localhost:3000',
   'https://apieasydesk.plimsoftware.pt',
 ];
 
