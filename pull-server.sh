@@ -1,7 +1,7 @@
 npm run build
 git add .
 
-git commit -am "Update cors"
+git commit -am "Update cors v2"
 git push apieasydesk master
 ssh agenda.plimsoftware.pt \
   'git -C /home/miguel/apieasydesk/api/ ' \
