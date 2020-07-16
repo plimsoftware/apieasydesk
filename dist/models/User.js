@@ -14,23 +14,16 @@ var _bcryptjs = require('bcryptjs'); var _bcryptjs2 = _interopRequireDefault(_bc
           },
         },
       },
-      user: {
+      username: {
         type: _sequelize2.default.STRING,
         defaultValue: '',
-        validate: {
-          len: {
-            args: [3, 100],
-            msg: 'User must be between 3 and 255 characters',
-          },
+        unique: {
+          msg: 'Username already exists',
         },
-      },
-      profile: {
-        type: _sequelize2.default.STRING,
-        defaultValue: '',
         validate: {
           len: {
             args: [3, 100],
-            msg: 'Profile must be between 3 and 100 characters',
+            msg: 'Username must be between 3 and 255 characters',
           },
         },
       },

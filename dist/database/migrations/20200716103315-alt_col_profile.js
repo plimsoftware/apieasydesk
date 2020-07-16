@@ -1,6 +1,6 @@
-module.exports = {
+"use strict";module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.changeColumn(
-    'productcategories', // Tabela
+    'profile', // Tabela
     'name', // Coluna
     {
       type: Sequelize.STRING,

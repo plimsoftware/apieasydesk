@@ -11,8 +11,9 @@ var _helmet = require('helmet'); var _helmet2 = _interopRequireDefault(_helmet);
 
 var _homeRoutes = require('./routes/homeRoutes'); var _homeRoutes2 = _interopRequireDefault(_homeRoutes);
 var _userRoutes = require('./routes/userRoutes'); var _userRoutes2 = _interopRequireDefault(_userRoutes);
+var _userprofRoutes = require('./routes/userprofRoutes'); var _userprofRoutes2 = _interopRequireDefault(_userprofRoutes);
 var _tokenRoutes = require('./routes/tokenRoutes'); var _tokenRoutes2 = _interopRequireDefault(_tokenRoutes);
-var _prodCatRoutes = require('./routes/prodCatRoutes'); var _prodCatRoutes2 = _interopRequireDefault(_prodCatRoutes);
+var _profileRoutes = require('./routes/profileRoutes'); var _profileRoutes2 = _interopRequireDefault(_profileRoutes);
 var _productRoutes = require('./routes/productRoutes'); var _productRoutes2 = _interopRequireDefault(_productRoutes);
 var _clientRoutes = require('./routes/clientRoutes'); var _clientRoutes2 = _interopRequireDefault(_clientRoutes);
 
@@ -48,7 +49,8 @@ class App {
   routes() {
     this.app.use('/', _homeRoutes2.default);
     this.app.use('/users/', _userRoutes2.default);
-    this.app.use('/prodcat/', _prodCatRoutes2.default);
+    this.app.use('/userprof/', _userprofRoutes2.default);
+    this.app.use('/profile/', _profileRoutes2.default);
     this.app.use('/tokens/', _tokenRoutes2.default);
     this.app.use('/product/', _productRoutes2.default);
     this.app.use('/clients/', _clientRoutes2.default);

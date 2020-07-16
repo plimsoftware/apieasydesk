@@ -1,23 +1,10 @@
 import User from '../models/User';
 import UserProf from '../models/UserProf';
-import Profile from '../models/Profile';
 
-class UserController {
+class UserProfController {
   // Store
   async store(req, res) {
     try {
-      const myprofile = await Profile.findOne({
-        where: {
-          name: req.body.profile,
-        },
-      });
-
-      if (!myprofile) {
-        return res.status(400).json({
-          errors: ['Profile does not exist.'],
-        });
-      }
-
       const novoUser = await User.create({
         username: req.body.username,
         password: req.body.password,
@@ -27,17 +14,14 @@ class UserController {
       const novUserProf = await UserProf.create({
         username: req.body.username,
         profile: req.body.profile,
-        userid: novoUser.id,
       });
       const {
-        id, username, name,
+        user, name,
       } = novoUser;
       const {
         profile,
       } = novUserProf;
-      return res.json({
-        id, username, name, profile,
-      });
+      return res.json({ user, name, profile });
     } catch (e) {
       return res.status(400).json({ errors: e.name });
     }
@@ -46,8 +30,8 @@ class UserController {
   // Index
   async index(req, res) {
     try {
-      const users = await User.findAll({ attributes: ['id', 'username', 'name'] });
-      return res.json(users);
+      const userprof = await UserProf.findAll();
+      return res.json(userprof);
     } catch (e) {
       return res.json(null);
     }
@@ -59,15 +43,15 @@ class UserController {
       const user = await User.findByPk(req.params.id);
 
       const {
-        id, name, username,
+        id, nome, email, admin,
       } = user;
       return res.json({
-        id, name, username,
+        id, nome, email, admin,
       });
     } catch (e) {
       // return res.json(null);
       return res.status(400).json({
-        errors: ['User does not exist.'],
+        errors: ['User não existe.'],
       });
     }
   }
@@ -98,7 +82,7 @@ class UserController {
 
       if (!user) {
         return res.status(400).json({
-          errors: ['User does not exist.'],
+          errors: ['User não existe.'],
         });
       }
 
@@ -110,4 +94,4 @@ class UserController {
   }
 }
 
-export default new UserController();
+export default new UserProfController();

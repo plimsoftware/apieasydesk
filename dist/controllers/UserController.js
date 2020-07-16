@@ -1,14 +1,43 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _User = require('../models/User'); var _User2 = _interopRequireDefault(_User);
+var _UserProf = require('../models/UserProf'); var _UserProf2 = _interopRequireDefault(_UserProf);
+var _Profile = require('../models/Profile'); var _Profile2 = _interopRequireDefault(_Profile);
 
 class UserController {
   // Store
   async store(req, res) {
     try {
-      const novoUser = await _User2.default.create(req.body);
+      const myprofile = await _Profile2.default.findOne({
+        where: {
+          name: req.body.profile,
+        },
+      });
+
+      if (!myprofile) {
+        return res.status(400).json({
+          errors: ['Profile does not exist.'],
+        });
+      }
+
+      const novoUser = await _User2.default.create({
+        username: req.body.username,
+        password: req.body.password,
+        name: req.body.name,
+      });
+
+      const novUserProf = await _UserProf2.default.create({
+        username: req.body.username,
+        profile: req.body.profile,
+        userid: novoUser.id,
+      });
       const {
-        user, name, profile,
+        id, username, name,
       } = novoUser;
-      return res.json({ user, name, profile });
+      const {
+        profile,
+      } = novUserProf;
+      return res.json({
+        id, username, name, profile,
+      });
     } catch (e) {
       return res.status(400).json({ errors: e.name });
     }
@@ -17,7 +46,7 @@ class UserController {
   // Index
   async index(req, res) {
     try {
-      const users = await _User2.default.findAll({ attributes: ['user', 'name', 'profile'] });
+      const users = await _User2.default.findAll({ attributes: ['id', 'username', 'name'] });
       return res.json(users);
     } catch (e) {
       return res.json(null);
@@ -30,15 +59,15 @@ class UserController {
       const user = await _User2.default.findByPk(req.params.id);
 
       const {
-        id, nome, email, admin,
+        id, name, username,
       } = user;
       return res.json({
-        id, nome, email, admin,
+        id, name, username,
       });
     } catch (e) {
       // return res.json(null);
       return res.status(400).json({
-        errors: ['User não existe.'],
+        errors: ['User does not exist.'],
       });
     }
   }
@@ -69,7 +98,7 @@ class UserController {
 
       if (!user) {
         return res.status(400).json({
-          errors: ['User não existe.'],
+          errors: ['User does not exist.'],
         });
       }
 

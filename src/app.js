@@ -11,8 +11,9 @@ import helmet from 'helmet';
 
 import homeRoutes from './routes/homeRoutes';
 import userRoutes from './routes/userRoutes';
+import userprofRoutes from './routes/userprofRoutes';
 import tokenRoutes from './routes/tokenRoutes';
-import prodCatRoutes from './routes/prodCatRoutes';
+import profileRoutes from './routes/profileRoutes';
 import productRoutes from './routes/productRoutes';
 import clientRoutes from './routes/clientRoutes';
 
@@ -48,7 +49,8 @@ class App {
   routes() {
     this.app.use('/', homeRoutes);
     this.app.use('/users/', userRoutes);
-    this.app.use('/prodcat/', prodCatRoutes);
+    this.app.use('/userprof/', userprofRoutes);
+    this.app.use('/profile/', profileRoutes);
     this.app.use('/tokens/', tokenRoutes);
     this.app.use('/product/', productRoutes);
     this.app.use('/clients/', clientRoutes);

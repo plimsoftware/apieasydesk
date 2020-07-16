@@ -1,15 +1,11 @@
 module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.changeColumn(
-    'orderdetails', // Tabela
-    'order_id', // Coluna
+    'profile', // Tabela
+    'name', // Coluna
     {
       type: Sequelize.STRING,
       allowNull: false,
-      references: {
-        model: 'orders',
-        key: 'id',
-      },
-      onDelete: 'CASCADE',
+      unique: true,
     },
   ),
 

@@ -1,11 +1,11 @@
 "use strict"; function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _sequelize = require('sequelize'); var _sequelize2 = _interopRequireDefault(_sequelize);
 var _database = require('../config/database'); var _database2 = _interopRequireDefault(_database);
 var _User = require('../models/User'); var _User2 = _interopRequireDefault(_User);
-// import ProdCat from '../models/ProdCat';
-// import Product from '../models/Product';
+var _UserProf = require('../models/UserProf'); var _UserProf2 = _interopRequireDefault(_UserProf);
+var _Profile = require('../models/Profile'); var _Profile2 = _interopRequireDefault(_Profile);
 // import Client from '../models/Client';
 
-const models = [_User2.default];
+const models = [_User2.default, _UserProf2.default, _Profile2.default];
 
 const connection = new (0, _sequelize2.default)(_database2.default);
 

@@ -1,11 +1,11 @@
-import ProdCat from '../models/ProdCat';
+import Profile from '../models/Profile';
 
-class ProdCatController {
+class ProfileController {
   // Store
   async store(req, res) {
     try {
-      const novoProdCat = await ProdCat.create(req.body);
-      const { id, name } = novoProdCat;
+      const novoProfile = await Profile.create(req.body);
+      const { id, name } = novoProfile;
       return res.json({ id, name });
     } catch (e) {
       return res.status(400).json({
@@ -17,8 +17,8 @@ class ProdCatController {
   // Index
   async index(req, res) {
     try {
-      const prodCat = await ProdCat.findAll({ attributes: ['id', 'name'], order: [['name', 'ASC']] });
-      return res.json(prodCat);
+      const profile = await Profile.findAll({ attributes: ['id', 'name'], order: [['name', 'ASC']] });
+      return res.json(profile);
     } catch (e) {
       return res.json(null);
     }
@@ -27,14 +27,14 @@ class ProdCatController {
   // Show
   async show(req, res) {
     try {
-      const prodCat = await ProdCat.findByPk(req.params.id);
+      const profile = await Profile.findByPk(req.params.id);
 
-      const { id, name } = prodCat;
+      const { id, name } = profile;
       return res.json({ id, name });
     } catch (e) {
       // return res.json(null);
       return res.status(400).json({
-        errors: ['Produto não existe.'],
+        errors: ['Profile does not exist.'],
       });
     }
   }
@@ -42,15 +42,15 @@ class ProdCatController {
   // Update
   async update(req, res) {
     try {
-      const prodCat = await ProdCat.findByPk(req.params.id);
+      const profile = await Profile.findByPk(req.params.id);
 
-      if (!prodCat) {
+      if (!profile) {
         return res.status(400).json({
-          errors: ['Produto não existe.'],
+          errors: ['Profile does not exist.'],
         });
       }
 
-      const novosDados = await prodCat.update(req.body);
+      const novosDados = await profile.update(req.body);
       const { id, name } = novosDados;
       return res.json({ id, name });
     } catch (e) {
@@ -63,15 +63,15 @@ class ProdCatController {
   // Delete
   async delete(req, res) {
     try {
-      const prodCat = await ProdCat.findByPk(req.params.id);
+      const profile = await Profile.findByPk(req.params.id);
 
-      if (!prodCat) {
+      if (!profile) {
         return res.status(400).json({
-          errors: ['Produto não existe.'],
+          errors: ['Profile does not exist.'],
         });
       }
 
-      await prodCat.destroy();
+      await profile.destroy();
       return res.json(null);
     } catch (e) {
       return res.status(400).json({ errors: e.name });
@@ -79,4 +79,4 @@ class ProdCatController {
   }
 }
 
-export default new ProdCatController();
+export default new ProfileController();

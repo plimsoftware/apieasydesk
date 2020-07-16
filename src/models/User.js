@@ -14,23 +14,16 @@ export default class User extends Model {
           },
         },
       },
-      user: {
+      username: {
         type: Sequelize.STRING,
         defaultValue: '',
-        validate: {
-          len: {
-            args: [3, 100],
-            msg: 'User must be between 3 and 255 characters',
-          },
+        unique: {
+          msg: 'Username already exists',
         },
-      },
-      profile: {
-        type: Sequelize.STRING,
-        defaultValue: '',
         validate: {
           len: {
             args: [3, 100],
-            msg: 'Profile must be between 3 and 100 characters',
+            msg: 'Username must be between 3 and 255 characters',
           },
         },
       },

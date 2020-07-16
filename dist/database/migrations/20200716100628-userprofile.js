@@ -1,24 +1,24 @@
-module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('photos', {
+"use strict";module.exports = {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('userprofile', {
     id: {
       type: Sequelize.INTEGER,
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
     },
-    originalname: {
+    username: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    filename: {
+    profile: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    product_id: {
+    userid: {
       type: Sequelize.INTEGER,
       allowNull: false,
       references: {
-        model: 'products',
+        model: 'users',
         key: 'id',
       },
       onDelete: 'CASCADE',
@@ -34,5 +34,5 @@ module.exports = {
     },
   }),
 
-  down: (queryInterface) => queryInterface.dropTable('photos'),
+  down: (queryInterface) => queryInterface.dropTable('userprofile'),
 };
