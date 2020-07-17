@@ -19,6 +19,7 @@ var _clientRoutes = require('./routes/clientRoutes'); var _clientRoutes2 = _inte
 
 const whitelist = [
   'http://localhost:3002',
+  'http://localhost:3000',
   'https://apieasydesk.plimsoftware.pt',
 ];
 
