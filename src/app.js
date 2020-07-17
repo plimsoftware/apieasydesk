@@ -18,7 +18,7 @@ import productRoutes from './routes/productRoutes';
 import clientRoutes from './routes/clientRoutes';
 
 const whitelist = [
-  'http://localhost:3000',
+  'http://localhost:3002',
   'https://apieasydesk.plimsoftware.pt',
 ];
 

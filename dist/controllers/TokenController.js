@@ -4,7 +4,7 @@ var _User = require('../models/User'); var _User2 = _interopRequireDefault(_User
 
 class TokenController {
   async store(req, res) {
-    const { userid = '', password = '' } = req.body;
+    const { userid = '', password = '', profile = '' } = req.body;
 
     if (!userid || !password) {
       return res.status(401).json({
@@ -12,7 +12,7 @@ class TokenController {
       });
     }
 
-    const myUser = await _User2.default.findOne({ where: { user: userid } });
+    const myUser = await _User2.default.findOne({ where: { username: userid } });
 
     if (!myUser) {
       return res.status(401).json({
@@ -26,17 +26,17 @@ class TokenController {
       });
     }
 
-    const { user, name, profile } = myUser;
-    const token = _jsonwebtoken2.default.sign({ user, name, profile }, process.env.TOKEN_SECRET, {
+    const { username, name } = myUser;
+    const token = _jsonwebtoken2.default.sign({ username, name, profile }, process.env.TOKEN_SECRET, {
       expiresIn: process.env.TOKEN_EXPIRATION,
     });
 
     return res.json({
       token,
       client: {
-        user: myUser.user,
+        username: myUser.username,
         name: myUser.name,
-        profile: myUser.profile,
+        profile,
       },
     });
   }

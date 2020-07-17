@@ -46,7 +46,13 @@ class UserController {
   // Index
   async index(req, res) {
     try {
-      const users = await User.findAll({ attributes: ['id', 'username', 'name'] });
+      const users = await User.findAll({
+        attributes: ['id', 'username', 'name'],
+        include: {
+          model: UserProf,
+          attributes: ['profile'],
+        },
+      });
       return res.json(users);
     } catch (e) {
       return res.json(null);
@@ -56,13 +62,18 @@ class UserController {
   // Show
   async show(req, res) {
     try {
-      const user = await User.findByPk(req.params.id);
+      const user = await User.findByPk(req.params.id, {
+        include: {
+          model: UserProf,
+          attributes: ['profile'],
+        },
+      });
 
       const {
-        id, name, username,
+        id, name, username, UserProfs,
       } = user;
       return res.json({
-        id, name, username,
+        id, name, username, UserProfs,
       });
     } catch (e) {
       // return res.json(null);

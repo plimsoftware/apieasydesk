@@ -4,7 +4,7 @@ import User from '../models/User';
 
 class TokenController {
   async store(req, res) {
-    const { userid = '', password = '' } = req.body;
+    const { userid = '', password = '', profile = '' } = req.body;
 
     if (!userid || !password) {
       return res.status(401).json({
@@ -12,7 +12,7 @@ class TokenController {
       });
     }
 
-    const myUser = await User.findOne({ where: { user: userid } });
+    const myUser = await User.findOne({ where: { username: userid } });
 
     if (!myUser) {
       return res.status(401).json({
@@ -26,17 +26,17 @@ class TokenController {
       });
     }
 
-    const { user, name, profile } = myUser;
-    const token = jwt.sign({ user, name, profile }, process.env.TOKEN_SECRET, {
+    const { username, name } = myUser;
+    const token = jwt.sign({ username, name, profile }, process.env.TOKEN_SECRET, {
       expiresIn: process.env.TOKEN_EXPIRATION,
     });
 
     return res.json({
       token,
       client: {
-        user: myUser.user,
+        username: myUser.username,
         name: myUser.name,
-        profile: myUser.profile,
+        profile,
       },
     });
   }
