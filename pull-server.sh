@@ -1,7 +1,7 @@
 npm run build
 git add .
 
-git commit -am "Update cors v4"
+git commit -am "Update User show to find by username"
 git push apieasydesk master
 ssh agenda.plimsoftware.pt \
   'git -C /home/miguel/apieasydesk/api/ ' \

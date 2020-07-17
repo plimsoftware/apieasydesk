@@ -62,7 +62,8 @@ class UserController {
   // Show
   async show(req, res) {
     try {
-      const user = await _User2.default.findByPk(req.params.id, {
+      const user = await _User2.default.findOne({
+        where: { username: req.params.id },
         include: {
           model: _UserProf2.default,
           attributes: ['profile'],
