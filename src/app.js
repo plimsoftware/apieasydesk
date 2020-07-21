@@ -16,6 +16,7 @@ import tokenRoutes from './routes/tokenRoutes';
 import profileRoutes from './routes/profileRoutes';
 import productRoutes from './routes/productRoutes';
 import clientRoutes from './routes/clientRoutes';
+import companyRoutes from './routes/companyRoutes';
 
 const whitelist = [
   'http://localhost:3002',
@@ -56,6 +57,7 @@ class App {
     this.app.use('/tokens/', tokenRoutes);
     this.app.use('/product/', productRoutes);
     this.app.use('/clients/', clientRoutes);
+    this.app.use('/company/', companyRoutes);
   }
 }
 

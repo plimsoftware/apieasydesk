@@ -3,9 +3,9 @@ import databaseConfig from '../config/database';
 import User from '../models/User';
 import UserProf from '../models/UserProf';
 import Profile from '../models/Profile';
-// import Client from '../models/Client';
+import Company from '../models/Company';
 
-const models = [User, UserProf, Profile];
+const models = [User, UserProf, Profile, Company];
 
 const connection = new Sequelize(databaseConfig);
 

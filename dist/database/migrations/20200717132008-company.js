@@ -1,4 +1,4 @@
-module.exports = {
+"use strict";module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.createTable('company', {
     id: {
       type: Sequelize.INTEGER,

@@ -1,5 +1,5 @@
-module.exports = {
-  up: (queryInterface, Sequelize) => queryInterface.createTable('company', {
+"use strict";module.exports = {
+  up: (queryInterface, Sequelize) => queryInterface.createTable('teams', {
     id: {
       type: Sequelize.INTEGER,
       allowNull: false,
@@ -14,28 +14,8 @@ module.exports = {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    address: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    locationcp: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    location: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    defaultlocalsupport: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
-    phone: {
-      type: Sequelize.INTEGER,
-      allowNull: false,
-    },
-    email: {
-      type: Sequelize.STRING,
+    localsupportteam: {
+      type: Sequelize.BOOLEAN,
       allowNull: false,
     },
     createdby: {
@@ -56,5 +36,5 @@ module.exports = {
     },
   }),
 
-  down: (queryInterface) => queryInterface.dropTable('company'),
+  down: (queryInterface) => queryInterface.dropTable('teams'),
 };

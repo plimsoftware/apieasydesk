@@ -16,6 +16,7 @@ var _tokenRoutes = require('./routes/tokenRoutes'); var _tokenRoutes2 = _interop
 var _profileRoutes = require('./routes/profileRoutes'); var _profileRoutes2 = _interopRequireDefault(_profileRoutes);
 var _productRoutes = require('./routes/productRoutes'); var _productRoutes2 = _interopRequireDefault(_productRoutes);
 var _clientRoutes = require('./routes/clientRoutes'); var _clientRoutes2 = _interopRequireDefault(_clientRoutes);
+var _companyRoutes = require('./routes/companyRoutes'); var _companyRoutes2 = _interopRequireDefault(_companyRoutes);
 
 const whitelist = [
   'http://localhost:3002',
@@ -56,6 +57,7 @@ class App {
     this.app.use('/tokens/', _tokenRoutes2.default);
     this.app.use('/product/', _productRoutes2.default);
     this.app.use('/clients/', _clientRoutes2.default);
+    this.app.use('/company/', _companyRoutes2.default);
   }
 }
 

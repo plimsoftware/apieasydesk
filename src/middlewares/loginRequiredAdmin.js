@@ -14,12 +14,10 @@ export default async (req, res, next) => {
 
   try {
     const dados = jwt.verify(token, process.env.TOKEN_SECRET);
-    const { user, name, profile } = dados;
-    // Para validar se alterou o email. Se sim, precisa de novo token
+    const { username, name, profile } = dados;
     const myUser = await User.findOne({
       where: {
-        user,
-        name,
+        username,
       },
     });
 
@@ -29,7 +27,13 @@ export default async (req, res, next) => {
       });
     }
 
-    req.userUser = user;
+    if (profile !== 'Administrator') {
+      return res.status(401).json({
+        errors: ['User invalid.'],
+      });
+    }
+
+    req.userUser = username;
     req.userName = name;
     req.userProfile = profile;
     return next();
