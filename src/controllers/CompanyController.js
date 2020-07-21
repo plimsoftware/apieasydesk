@@ -3,18 +3,7 @@ import Company from '../models/Company';
 class CompanyController {
   // Store
   async store(req, res) {
-    const {
-      name,
-      address,
-      location,
-      locationcp,
-      defaultlocalsupport,
-      phone,
-      email,
-      createdby,
-      updatedby,
-      active,
-    } = req.body;
+    const { name } = req.body;
     try {
       const findCompany = await Company.findOne({
         where: {
@@ -28,18 +17,11 @@ class CompanyController {
         });
       }
 
-      const newCompany = await Company.create({
-        name,
-        address,
-        locationcp,
-        location,
-        defaultlocalsupport,
-        phone,
-        email,
-        createdby,
-        updatedby,
-        active,
-      });
+      const myBody = req.body;
+      myBody.createdby = req.userUser;
+      myBody.updatedby = req.userUser;
+
+      const newCompany = await Company.create(myBody);
 
       return res.json(newCompany);
     } catch (e) {
