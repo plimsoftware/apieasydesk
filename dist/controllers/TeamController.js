@@ -36,6 +36,23 @@ class TeamController {
   // Index
   async index(req, res) {
     try {
+      const { teamname } = req.query;
+
+      if (teamname) {
+        const team = await _Team2.default.findOne({
+          where: { name: teamname },
+          include: {
+            model: _Teammember2.default,
+            include: {
+              attributes: ['name', 'username'],
+              model: _User2.default,
+            },
+          },
+        });
+
+        return res.json(team);
+      }
+
       const teams = await _Team2.default.findAll({
         order: [['name', 'ASC']],
         include: {
@@ -55,8 +72,7 @@ class TeamController {
   // Show
   async show(req, res) {
     try {
-      const team = await _Team2.default.findOne({
-        where: { id: req.params.id },
+      const team = await _Team2.default.findByPk(req.params.id, {
         include: {
           model: _Teammember2.default,
           include: {
