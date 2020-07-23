@@ -58,26 +58,10 @@ class UserController {
   // Index
   async index(req, res) {
     try {
-      const users = await User.findAll({
-        attributes: ['id', 'username', 'name', 'initialpassword', 'created_at',
-          'createdby', 'updated_at', 'updatedby'],
-        include: {
-          model: UserProf,
-          attributes: ['profile'],
-        },
-      });
-      return res.json(users);
-    } catch (e) {
-      return res.json(null);
-    }
-  }
-
-  // Show
-  async show(req, res) {
-    try {
       const { userid } = req.query;
       if (userid) {
-        const user = await User.findByPk(userid, {
+        const user = await User.findOne({
+          where: { id: userid },
           include: {
             model: UserProf,
             attributes: ['profile'],
@@ -101,6 +85,23 @@ class UserController {
         });
       }
 
+      const users = await User.findAll({
+        attributes: ['id', 'username', 'name', 'initialpassword', 'created_at',
+          'createdby', 'updated_at', 'updatedby'],
+        include: {
+          model: UserProf,
+          attributes: ['profile'],
+        },
+      });
+      return res.json(users);
+    } catch (e) {
+      return res.json(null);
+    }
+  }
+
+  // Show
+  async show(req, res) {
+    try {
       const user = await User.findOne({
         where: { username: req.params.id },
         include: {
