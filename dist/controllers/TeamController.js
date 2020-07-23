@@ -1,5 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _Team = require('../models/Team'); var _Team2 = _interopRequireDefault(_Team);
 var _Teammember = require('../models/Teammember'); var _Teammember2 = _interopRequireDefault(_Teammember);
+var _User = require('../models/User'); var _User2 = _interopRequireDefault(_User);
 
 class TeamController {
   // Store
@@ -39,6 +40,10 @@ class TeamController {
         order: [['name', 'ASC']],
         include: {
           model: _Teammember2.default,
+          include: {
+            attributes: ['name', 'username'],
+            model: _User2.default,
+          },
         },
       });
       return res.json(teams);
@@ -54,6 +59,10 @@ class TeamController {
         where: { id: req.params.id },
         include: {
           model: _Teammember2.default,
+          include: {
+            attributes: ['name', 'username'],
+            model: _User2.default,
+          },
         },
       });
 

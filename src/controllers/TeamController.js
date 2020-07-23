@@ -1,5 +1,6 @@
 import Team from '../models/Team';
 import Teammember from '../models/Teammember';
+import User from '../models/User';
 
 class TeamController {
   // Store
@@ -39,6 +40,10 @@ class TeamController {
         order: [['name', 'ASC']],
         include: {
           model: Teammember,
+          include: {
+            attributes: ['name', 'username'],
+            model: User,
+          },
         },
       });
       return res.json(teams);
@@ -54,6 +59,10 @@ class TeamController {
         where: { id: req.params.id },
         include: {
           model: Teammember,
+          include: {
+            attributes: ['name', 'username'],
+            model: User,
+          },
         },
       });
 

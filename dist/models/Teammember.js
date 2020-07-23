@@ -30,4 +30,8 @@
 
     return this;
   }
+
+  static associate(models) {
+    this.hasOne(models.User, { sourceKey: 'userid', foreignKey: 'id' });
+  }
 } exports.default = Teammember;

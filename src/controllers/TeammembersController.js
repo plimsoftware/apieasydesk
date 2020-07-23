@@ -40,7 +40,12 @@ class TeammemberController {
   // Index
   async index(req, res) {
     try {
-      const teammember = await Teammember.findAll();
+      const teammember = await Teammember.findAll({
+        include: {
+          attributes: ['name', 'username'],
+          model: User,
+        },
+      });
       return res.json(teammember);
     } catch (e) {
       return res.json(null);
@@ -50,7 +55,12 @@ class TeammemberController {
   // Show
   async show(req, res) {
     try {
-      const teammember = await Teammember.findByPk(req.params.id);
+      const teammember = await Teammember.findByPk(req.params.id, {
+        include: {
+          attributes: ['name', 'username'],
+          model: User,
+        },
+      });
 
       return res.json(teammember);
     } catch (e) {

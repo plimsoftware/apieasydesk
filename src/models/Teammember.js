@@ -30,4 +30,8 @@ export default class Teammember extends Model {
 
     return this;
   }
+
+  static associate(models) {
+    this.hasOne(models.User, { sourceKey: 'userid', foreignKey: 'id' });
+  }
 }
