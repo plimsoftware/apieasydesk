@@ -42,13 +42,13 @@ class UserController {
         userid: novoUser.id,
       });
       const {
-        id, username, name,
+        id, username, name, initialpassword, active,
       } = novoUser;
       const {
         profile,
       } = novUserProf;
       return res.json({
-        id, username, name, profile,
+        id, username, name, profile, initialpassword, active,
       });
     } catch (e) {
       return res.status(400).json({ errors: e.name });
@@ -69,7 +69,7 @@ class UserController {
         });
 
         const {
-          id, username, name, initialpassword, created_at,
+          id, username, name, initialpassword, active, created_at,
           createdby, updated_at, updatedby, UserProfs,
         } = user;
         return res.json({
@@ -77,6 +77,7 @@ class UserController {
           username,
           name,
           initialpassword,
+          active,
           created_at,
           createdby,
           updated_at,
@@ -86,7 +87,7 @@ class UserController {
       }
 
       const users = await _User2.default.findAll({
-        attributes: ['id', 'username', 'name', 'initialpassword', 'created_at',
+        attributes: ['id', 'username', 'name', 'initialpassword', 'active', 'created_at',
           'createdby', 'updated_at', 'updatedby'],
         include: {
           model: _UserProf2.default,
@@ -111,7 +112,7 @@ class UserController {
       });
 
       const {
-        id, username, name, initialpassword, created_at,
+        id, username, name, initialpassword, active, created_at,
         createdby, updated_at, updatedby, UserProfs,
       } = user;
       return res.json({
@@ -119,6 +120,7 @@ class UserController {
         username,
         name,
         initialpassword,
+        active,
         created_at,
         createdby,
         updated_at,
@@ -149,10 +151,10 @@ class UserController {
 
       const newData = await user.update(myBody);
       const {
-        id, name, username, created_at, createdby, updated_at, updatedby,
+        id, name, username, initialpassword, active, created_at, createdby, updated_at, updatedby,
       } = newData;
       return res.json({
-        id, name, username, created_at, createdby, updated_at, updatedby,
+        id, name, username, initialpassword, active, created_at, createdby, updated_at, updatedby,
       });
     } catch (e) {
       return res.status(400).json({ errors: e.name });

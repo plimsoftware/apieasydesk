@@ -23,7 +23,7 @@ var _bcryptjs = require('bcryptjs'); var _bcryptjs2 = _interopRequireDefault(_bc
         validate: {
           len: {
             args: [3, 100],
-            msg: 'Username must be between 3 and 255 characters',
+            msg: 'Username must be between 3 and 100 characters',
           },
         },
       },
@@ -36,6 +36,10 @@ var _bcryptjs = require('bcryptjs'); var _bcryptjs2 = _interopRequireDefault(_bc
         defaultValue: 'SYSTEM',
       },
       initialpassword: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: true,
+      },
+      active: {
         type: _sequelize2.default.BOOLEAN,
         defaultValue: true,
       },

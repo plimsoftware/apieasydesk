@@ -23,7 +23,7 @@ export default class User extends Model {
         validate: {
           len: {
             args: [3, 100],
-            msg: 'Username must be between 3 and 255 characters',
+            msg: 'Username must be between 3 and 100 characters',
           },
         },
       },
@@ -36,6 +36,10 @@ export default class User extends Model {
         defaultValue: 'SYSTEM',
       },
       initialpassword: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
+      },
+      active: {
         type: Sequelize.BOOLEAN,
         defaultValue: true,
       },

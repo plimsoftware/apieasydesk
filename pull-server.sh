@@ -1,7 +1,7 @@
 npm run build
 git add .
 
-git commit -am "Updated Users workflow query"
+git commit -am "Add Users active"
 git push apieasydesk master
 ssh agenda.plimsoftware.pt \
   'git -C /home/miguel/apieasydesk/api/ ' \
