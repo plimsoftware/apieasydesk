@@ -1,19 +1,20 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _Company = require('../models/Company'); var _Company2 = _interopRequireDefault(_Company);
+import Team from '../models/Team';
+import Teammember from '../models/Teammember';
 
-class CompanyController {
+class TeamController {
   // Store
   async store(req, res) {
     const { name } = req.body;
     try {
-      const findCompany = await _Company2.default.findOne({
+      const findTeam = await Team.findOne({
         where: {
           name,
         },
       });
 
-      if (findCompany) {
+      if (findTeam) {
         return res.status(400).json({
-          errors: ['Company already exist.'],
+          errors: ['Team already exist.'],
         });
       }
 
@@ -21,9 +22,9 @@ class CompanyController {
       myBody.createdby = req.userUser;
       myBody.updatedby = req.userUser;
 
-      const newCompany = await _Company2.default.create(myBody);
+      const newTeam = await Team.create(myBody);
 
-      return res.json(newCompany);
+      return res.json(newTeam);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
@@ -34,10 +35,13 @@ class CompanyController {
   // Index
   async index(req, res) {
     try {
-      const companies = await _Company2.default.findAll({
+      const teams = await Team.findAll({
         order: [['name', 'ASC']],
+        include: {
+          model: Teammember,
+        },
       });
-      return res.json(companies);
+      return res.json(teams);
     } catch (e) {
       return res.json(null);
     }
@@ -46,14 +50,17 @@ class CompanyController {
   // Show
   async show(req, res) {
     try {
-      const company = await _Company2.default.findOne({
+      const team = await Team.findOne({
         where: { id: req.params.id },
+        include: {
+          model: Teammember,
+        },
       });
 
-      return res.json(company);
+      return res.json(team);
     } catch (e) {
       return res.status(400).json({
-        errors: ['Company does not exist.'],
+        errors: ['Team does not exist.'],
       });
     }
   }
@@ -61,18 +68,18 @@ class CompanyController {
   // Update
   async update(req, res) {
     try {
-      const findCompany = await _Company2.default.findByPk(req.params.id);
+      const findTeam = await Team.findByPk(req.params.id);
 
-      if (!findCompany) {
+      if (!findTeam) {
         return res.status(400).json({
-          errors: ['Company does not exist.'],
+          errors: ['Team does not exist.'],
         });
       }
 
       const myBody = req.body;
       myBody.updatedby = req.userUser;
 
-      const newData = await findCompany.update(myBody);
+      const newData = await findTeam.update(myBody);
 
       return res.json(newData);
     } catch (e) {
@@ -85,15 +92,15 @@ class CompanyController {
   // Delete
   async delete(req, res) {
     try {
-      const company = await _Company2.default.findByPk(req.params.id);
+      const team = await Team.findByPk(req.params.id);
 
-      if (!company) {
+      if (!team) {
         return res.status(400).json({
-          errors: ['Company does not exist.'],
+          errors: ['Team does not exist.'],
         });
       }
 
-      await company.destroy();
+      await team.destroy();
       return res.json(null);
     } catch (e) {
       return res.status(400).json({ errors: e.name });
@@ -101,4 +108,4 @@ class CompanyController {
   }
 }
 
-exports. default = new CompanyController();
+export default new TeamController();

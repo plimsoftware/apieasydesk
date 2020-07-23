@@ -14,9 +14,10 @@ import userRoutes from './routes/userRoutes';
 import userprofRoutes from './routes/userprofRoutes';
 import tokenRoutes from './routes/tokenRoutes';
 import profileRoutes from './routes/profileRoutes';
-import productRoutes from './routes/productRoutes';
 import clientRoutes from './routes/clientRoutes';
 import companyRoutes from './routes/companyRoutes';
+import teamRoutes from './routes/teamRoutes';
+import teammembersRoutes from './routes/teammembersRoutes';
 
 const whitelist = [
   'http://localhost:3002',
@@ -55,9 +56,10 @@ class App {
     this.app.use('/userprof/', userprofRoutes);
     this.app.use('/profile/', profileRoutes);
     this.app.use('/tokens/', tokenRoutes);
-    this.app.use('/product/', productRoutes);
     this.app.use('/clients/', clientRoutes);
     this.app.use('/company/', companyRoutes);
+    this.app.use('/teams/', teamRoutes);
+    this.app.use('/teammembers/', teammembersRoutes);
   }
 }
 

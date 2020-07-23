@@ -34,7 +34,9 @@ class CompanyController {
   // Index
   async index(req, res) {
     try {
-      const companies = await Company.findAll();
+      const companies = await Company.findAll({
+        order: [['name', 'ASC']],
+      });
       return res.json(companies);
     } catch (e) {
       return res.json(null);

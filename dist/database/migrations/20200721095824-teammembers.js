@@ -13,9 +13,18 @@
     userid: {
       type: Sequelize.INTEGER,
       allowNull: false,
-      unique: true,
       references: {
         model: 'users',
+        key: 'id',
+      },
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    },
+    teamid: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'teams',
         key: 'id',
       },
       onDelete: 'CASCADE',

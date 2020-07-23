@@ -62,6 +62,23 @@ class UserController {
   // Show
   async show(req, res) {
     try {
+      const { userid } = req.query;
+      if (userid) {
+        const user = await User.findByPk(userid, {
+          include: {
+            model: UserProf,
+            attributes: ['profile'],
+          },
+        });
+
+        const {
+          id, name, username, UserProfs,
+        } = user;
+        return res.json({
+          id, name, username, UserProfs,
+        });
+      }
+
       const user = await User.findOne({
         where: { username: req.params.id },
         include: {

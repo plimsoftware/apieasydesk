@@ -14,9 +14,10 @@ var _userRoutes = require('./routes/userRoutes'); var _userRoutes2 = _interopReq
 var _userprofRoutes = require('./routes/userprofRoutes'); var _userprofRoutes2 = _interopRequireDefault(_userprofRoutes);
 var _tokenRoutes = require('./routes/tokenRoutes'); var _tokenRoutes2 = _interopRequireDefault(_tokenRoutes);
 var _profileRoutes = require('./routes/profileRoutes'); var _profileRoutes2 = _interopRequireDefault(_profileRoutes);
-var _productRoutes = require('./routes/productRoutes'); var _productRoutes2 = _interopRequireDefault(_productRoutes);
 var _clientRoutes = require('./routes/clientRoutes'); var _clientRoutes2 = _interopRequireDefault(_clientRoutes);
 var _companyRoutes = require('./routes/companyRoutes'); var _companyRoutes2 = _interopRequireDefault(_companyRoutes);
+var _teamRoutes = require('./routes/teamRoutes'); var _teamRoutes2 = _interopRequireDefault(_teamRoutes);
+var _teammembersRoutes = require('./routes/teammembersRoutes'); var _teammembersRoutes2 = _interopRequireDefault(_teammembersRoutes);
 
 const whitelist = [
   'http://localhost:3002',
@@ -55,9 +56,10 @@ class App {
     this.app.use('/userprof/', _userprofRoutes2.default);
     this.app.use('/profile/', _profileRoutes2.default);
     this.app.use('/tokens/', _tokenRoutes2.default);
-    this.app.use('/product/', _productRoutes2.default);
     this.app.use('/clients/', _clientRoutes2.default);
     this.app.use('/company/', _companyRoutes2.default);
+    this.app.use('/teams/', _teamRoutes2.default);
+    this.app.use('/teammembers/', _teammembersRoutes2.default);
   }
 }
 
