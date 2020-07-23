@@ -1,14 +1,14 @@
 import { Router } from 'express';
 import userController from '../controllers/UserController';
-// import loginRequiredAdmin from '../middlewares/loginRequiredAdmin';
+import loginRequiredAdmin from '../middlewares/loginRequiredAdmin';
 
 const router = new Router();
 
 
-router.get('/', userController.index); // TEMPORARIO SEM LOGINREQUIRED
-router.get('/:id', userController.show); // TEMPORARIO SEM LOGINREQUIRED
-router.post('/', userController.store); // Cria user TEMPORARIO SEM LOGINREQUIRED
-// router.put('/:id', loginRequiredAdmin, userController.update); // Update user
-router.delete('/:id', userController.delete); // TEMPORARIO SEM LOGINREQUIRED
+router.get('/', userController.index);
+router.get('/:id', userController.show); // search by username or ?userid
+router.post('/', loginRequiredAdmin, userController.store);
+router.put('/:id', loginRequiredAdmin, userController.update);
+router.delete('/:id', loginRequiredAdmin, userController.delete);
 
 export default router;

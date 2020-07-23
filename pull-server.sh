@@ -1,7 +1,7 @@
 npm run build
 git add .
 
-git commit -am "Team search with name"
+git commit -am "Updated Users workflow"
 git push apieasydesk master
 ssh agenda.plimsoftware.pt \
   'git -C /home/miguel/apieasydesk/api/ ' \

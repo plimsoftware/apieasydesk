@@ -27,6 +27,18 @@ var _bcryptjs = require('bcryptjs'); var _bcryptjs2 = _interopRequireDefault(_bc
           },
         },
       },
+      createdby: {
+        type: _sequelize2.default.STRING,
+        defaultValue: 'SYSTEM',
+      },
+      updatedby: {
+        type: _sequelize2.default.STRING,
+        defaultValue: 'SYSTEM',
+      },
+      initialpassword: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: true,
+      },
       password_hash: {
         type: _sequelize2.default.STRING,
         defaultValue: '',

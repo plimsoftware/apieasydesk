@@ -15,7 +15,19 @@
       allowNull: false,
       unique: true,
     },
+    initialpassword: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+    },
     password_hash: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    createdby: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    updatedby: {
       type: Sequelize.STRING,
       allowNull: false,
     },

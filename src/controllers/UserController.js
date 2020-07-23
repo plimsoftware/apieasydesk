@@ -18,11 +18,23 @@ class UserController {
         });
       }
 
-      const novoUser = await User.create({
-        username: req.body.username,
-        password: req.body.password,
-        name: req.body.name,
+      const findUser = await User.findOne({
+        where: {
+          username: req.body.username,
+        },
       });
+
+      if (findUser) {
+        return res.status(400).json({
+          errors: ['User already exists.'],
+        });
+      }
+
+      const myBody = req.body;
+      myBody.createdby = req.userUser;
+      myBody.updatedby = req.userUser;
+
+      const novoUser = await User.create(myBody);
 
       const novUserProf = await UserProf.create({
         username: req.body.username,
@@ -47,7 +59,8 @@ class UserController {
   async index(req, res) {
     try {
       const users = await User.findAll({
-        attributes: ['id', 'username', 'name'],
+        attributes: ['id', 'username', 'name', 'initialpassword', 'created_at',
+          'createdby', 'updated_at', 'updatedby'],
         include: {
           model: UserProf,
           attributes: ['profile'],
@@ -72,10 +85,19 @@ class UserController {
         });
 
         const {
-          id, name, username, UserProfs,
+          id, username, name, initialpassword, created_at,
+          createdby, updated_at, updatedby, UserProfs,
         } = user;
         return res.json({
-          id, name, username, UserProfs,
+          id,
+          username,
+          name,
+          initialpassword,
+          created_at,
+          createdby,
+          updated_at,
+          updatedby,
+          UserProfs,
         });
       }
 
@@ -88,10 +110,19 @@ class UserController {
       });
 
       const {
-        id, name, username, UserProfs,
+        id, username, name, initialpassword, created_at,
+        createdby, updated_at, updatedby, UserProfs,
       } = user;
       return res.json({
-        id, name, username, UserProfs,
+        id,
+        username,
+        name,
+        initialpassword,
+        created_at,
+        createdby,
+        updated_at,
+        updatedby,
+        UserProfs,
       });
     } catch (e) {
       // return res.json(null);
@@ -108,13 +139,20 @@ class UserController {
 
       if (!user) {
         return res.status(400).json({
-          errors: ['User não existe.'],
+          errors: ['User does not exist.'],
         });
       }
 
-      const novosDados = await user.update(req.body);
-      const { id, nome, email } = novosDados;
-      return res.json({ id, nome, email });
+      const myBody = req.body;
+      myBody.updatedby = req.userUser;
+
+      const newData = await user.update(myBody);
+      const {
+        id, name, username, created_at, createdby, updated_at, updatedby,
+      } = newData;
+      return res.json({
+        id, name, username, created_at, createdby, updated_at, updatedby,
+      });
     } catch (e) {
       return res.status(400).json({ errors: e.name });
     }

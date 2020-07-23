@@ -27,6 +27,18 @@ export default class User extends Model {
           },
         },
       },
+      createdby: {
+        type: Sequelize.STRING,
+        defaultValue: 'SYSTEM',
+      },
+      updatedby: {
+        type: Sequelize.STRING,
+        defaultValue: 'SYSTEM',
+      },
+      initialpassword: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
+      },
       password_hash: {
         type: Sequelize.STRING,
         defaultValue: '',
