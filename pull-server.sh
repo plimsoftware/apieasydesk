@@ -1,7 +1,7 @@
 npm run build
 git add .
 
-git commit -am "Update UserProf userid create workflow"
+git commit -am "Add changepass route"
 git push apieasydesk master
 ssh agenda.plimsoftware.pt \
   'git -C /home/miguel/apieasydesk/api/ ' \

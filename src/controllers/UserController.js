@@ -161,6 +161,28 @@ class UserController {
     }
   }
 
+  async changepass(req, res) {
+    try {
+      const user = await User.findByPk(req.body.id);
+
+      if (!user) {
+        return res.status(400).json({
+          errors: ['User does not exist.'],
+        });
+      }
+
+      await user.update({
+        updatedby: req.userUser,
+        password: req.body.password,
+        initialpassword: false,
+      });
+
+      return res.json(null);
+    } catch (e) {
+      return res.status(400).json({ errors: e.name });
+    }
+  }
+
   // Delete
   async delete(req, res) {
     try {
