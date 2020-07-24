@@ -36,11 +36,26 @@ class TeamController {
   // Index
   async index(req, res) {
     try {
-      const { teamname } = req.query;
+      const { teamname, ls } = req.query;
 
       if (teamname) {
         const team = await Team.findOne({
           where: { name: teamname },
+          include: {
+            model: Teammember,
+            include: {
+              attributes: ['name', 'username'],
+              model: User,
+            },
+          },
+        });
+
+        return res.json(team);
+      }
+
+      if (ls) {
+        const team = await Team.findAll({
+          where: { localsupportteam: true },
           include: {
             model: Teammember,
             include: {
