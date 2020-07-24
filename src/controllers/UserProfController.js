@@ -1,27 +1,41 @@
 import User from '../models/User';
+import Profile from '../models/Profile';
 import UserProf from '../models/UserProf';
 
 class UserProfController {
   // Store
   async store(req, res) {
     try {
-      const novoUser = await User.create({
-        username: req.body.username,
-        password: req.body.password,
-        name: req.body.name,
+      const myprofile = await Profile.findOne({
+        where: {
+          name: req.body.profile,
+        },
       });
+
+      if (!myprofile) {
+        return res.status(400).json({
+          errors: ['Profile does not exist.'],
+        });
+      }
+
+      const findUser = await User.findOne({
+        where: {
+          username: req.body.username,
+        },
+      });
+
+      if (!findUser) {
+        return res.status(400).json({
+          errors: ['User does not exist.'],
+        });
+      }
 
       const novUserProf = await UserProf.create({
         username: req.body.username,
         profile: req.body.profile,
       });
-      const {
-        user, name,
-      } = novoUser;
-      const {
-        profile,
-      } = novUserProf;
-      return res.json({ user, name, profile });
+
+      return res.json(novUserProf);
     } catch (e) {
       return res.status(400).json({ errors: e.name });
     }
@@ -40,18 +54,12 @@ class UserProfController {
   // Show
   async show(req, res) {
     try {
-      const user = await User.findByPk(req.params.id);
+      const userprof = await UserProf.findByPk(req.params.id);
 
-      const {
-        id, nome, email, admin,
-      } = user;
-      return res.json({
-        id, nome, email, admin,
-      });
+      return res.json(userprof);
     } catch (e) {
-      // return res.json(null);
       return res.status(400).json({
-        errors: ['User não existe.'],
+        errors: ['User profile does not exist.'],
       });
     }
   }
@@ -59,17 +67,16 @@ class UserProfController {
   // Update
   async update(req, res) {
     try {
-      const user = await User.findByPk(req.params.id);
+      const userprof = await UserProf.findByPk(req.params.id);
 
-      if (!user) {
+      if (!userprof) {
         return res.status(400).json({
-          errors: ['User não existe.'],
+          errors: ['User profile does not exist.'],
         });
       }
 
-      const novosDados = await user.update(req.body);
-      const { id, nome, email } = novosDados;
-      return res.json({ id, nome, email });
+      const newData = await userprof.update(req.body);
+      return res.json(newData);
     } catch (e) {
       return res.status(400).json({ errors: e.name });
     }
@@ -78,15 +85,15 @@ class UserProfController {
   // Delete
   async delete(req, res) {
     try {
-      const user = await User.findByPk(req.params.id);
+      const userprof = await UserProf.findByPk(req.params.id);
 
-      if (!user) {
+      if (!userprof) {
         return res.status(400).json({
-          errors: ['User não existe.'],
+          errors: ['User profile does not exist.'],
         });
       }
 
-      await user.destroy();
+      await userprof.destroy();
       return res.json(null);
     } catch (e) {
       return res.status(400).json({ errors: e.name });
