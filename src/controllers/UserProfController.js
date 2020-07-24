@@ -33,6 +33,7 @@ class UserProfController {
       const novUserProf = await UserProf.create({
         username: req.body.username,
         profile: req.body.profile,
+        userid: req.body.userid,
       });
 
       return res.json(novUserProf);
