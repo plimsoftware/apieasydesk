@@ -1,7 +1,7 @@
 npm run build
 git add .
 
-git commit -am "Add changepass route"
+git commit -am "Add changepass route bug"
 git push apieasydesk master
 ssh agenda.plimsoftware.pt \
   'git -C /home/miguel/apieasydesk/api/ ' \

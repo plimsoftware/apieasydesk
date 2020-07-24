@@ -9,7 +9,7 @@ const router = new (0, _express.Router)();
 router.get('/', _UserController2.default.index);
 router.get('/:id', _UserController2.default.show); // search by username or ?userid
 router.post('/', _loginRequiredAdmin2.default, _UserController2.default.store);
-router.post('/changepassword/', _loginRequired2.default, _UserController2.default.changepass);
+router.put('/changepassword/', _loginRequired2.default, _UserController2.default.changepass);
 router.put('/:id', _loginRequiredAdmin2.default, _UserController2.default.update);
 router.delete('/:id', _loginRequiredAdmin2.default, _UserController2.default.delete);
 

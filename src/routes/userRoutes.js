@@ -9,7 +9,7 @@ const router = new Router();
 router.get('/', userController.index);
 router.get('/:id', userController.show); // search by username or ?userid
 router.post('/', loginRequiredAdmin, userController.store);
-router.post('/changepassword/', loginRequired, userController.changepass);
+router.put('/changepassword/', loginRequired, userController.changepass);
 router.put('/:id', loginRequiredAdmin, userController.update);
 router.delete('/:id', loginRequiredAdmin, userController.delete);
 
