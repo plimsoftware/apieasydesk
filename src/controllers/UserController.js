@@ -64,7 +64,7 @@ class UserController {
           where: { id: userid },
           include: {
             model: UserProf,
-            attributes: ['profile'],
+            attributes: ['id', 'profile'],
           },
         });
 
@@ -91,7 +91,7 @@ class UserController {
           'createdby', 'updated_at', 'updatedby'],
         include: {
           model: UserProf,
-          attributes: ['profile'],
+          attributes: ['id', 'profile'],
         },
       });
       return res.json(users);
@@ -107,7 +107,7 @@ class UserController {
         where: { username: req.params.id },
         include: {
           model: UserProf,
-          attributes: ['profile'],
+          attributes: ['id', 'profile'],
         },
       });
 
