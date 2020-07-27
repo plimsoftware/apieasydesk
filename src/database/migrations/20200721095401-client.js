@@ -26,10 +26,6 @@ module.exports = {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    defaultLocalSupport: {
-      type: Sequelize.STRING,
-      allowNull: false,
-    },
     phone: {
       type: Sequelize.INTEGER,
       allowNull: false,

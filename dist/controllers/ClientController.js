@@ -1,7 +1,5 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _Client = require('../models/Client'); var _Client2 = _interopRequireDefault(_Client);
 var _Company = require('../models/Company'); var _Company2 = _interopRequireDefault(_Company);
-var _Team = require('../models/Team'); var _Team2 = _interopRequireDefault(_Team);
-
 
 class ClientController {
   // Store
@@ -16,16 +14,6 @@ class ClientController {
       if (!myCompany) {
         return res.status(400).json({
           errors: ['Company does not exist.'],
-        });
-      }
-
-      const myTeam = await _Team2.default.findOne({
-        where: { name: req.body.defaultlocalsupport },
-      });
-
-      if (!myTeam) {
-        return res.status(400).json({
-          errors: ['Local Support Team does not exist.'],
         });
       }
 
@@ -101,18 +89,6 @@ class ClientController {
         if (!myCompany) {
           return res.status(400).json({
             errors: ['Company does not exist.'],
-          });
-        }
-      }
-
-      if (req.body.defaultlocalsupport) {
-        const myTeam = await _Team2.default.findOne({
-          where: { name: req.body.defaultlocalsupport },
-        });
-
-        if (!myTeam) {
-          return res.status(400).json({
-            errors: ['Local Support Team does not exist.'],
           });
         }
       }

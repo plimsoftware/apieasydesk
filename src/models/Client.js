@@ -43,10 +43,6 @@ export default class Client extends Model {
           },
         },
       },
-      defaultlocalsupport: {
-        type: Sequelize.STRING,
-        defaultValue: 'General Local Support',
-      },
       phone: {
         type: Sequelize.INTEGER,
         defaultValue: 0,

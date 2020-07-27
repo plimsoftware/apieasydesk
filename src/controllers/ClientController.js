@@ -1,7 +1,5 @@
 import Client from '../models/Client';
 import Company from '../models/Company';
-import Team from '../models/Team';
-
 
 class ClientController {
   // Store
@@ -16,16 +14,6 @@ class ClientController {
       if (!myCompany) {
         return res.status(400).json({
           errors: ['Company does not exist.'],
-        });
-      }
-
-      const myTeam = await Team.findOne({
-        where: { name: req.body.defaultlocalsupport },
-      });
-
-      if (!myTeam) {
-        return res.status(400).json({
-          errors: ['Local Support Team does not exist.'],
         });
       }
 
@@ -101,18 +89,6 @@ class ClientController {
         if (!myCompany) {
           return res.status(400).json({
             errors: ['Company does not exist.'],
-          });
-        }
-      }
-
-      if (req.body.defaultlocalsupport) {
-        const myTeam = await Team.findOne({
-          where: { name: req.body.defaultlocalsupport },
-        });
-
-        if (!myTeam) {
-          return res.status(400).json({
-            errors: ['Local Support Team does not exist.'],
           });
         }
       }

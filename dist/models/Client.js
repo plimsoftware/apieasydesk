@@ -43,10 +43,6 @@
           },
         },
       },
-      defaultlocalsupport: {
-        type: _sequelize2.default.STRING,
-        defaultValue: 'General Local Support',
-      },
       phone: {
         type: _sequelize2.default.INTEGER,
         defaultValue: 0,
