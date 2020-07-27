@@ -4,8 +4,8 @@ class ProfileController {
   // Store
   async store(req, res) {
     try {
-      const novoProfile = await Profile.create(req.body);
-      const { id, name } = novoProfile;
+      const newProfile = await Profile.create(req.body);
+      const { id, name } = newProfile;
       return res.json({ id, name });
     } catch (e) {
       return res.status(400).json({
@@ -50,8 +50,8 @@ class ProfileController {
         });
       }
 
-      const novosDados = await profile.update(req.body);
-      const { id, name } = novosDados;
+      const newData = await profile.update(req.body);
+      const { id, name } = newData;
       return res.json({ id, name });
     } catch (e) {
       return res.status(400).json({

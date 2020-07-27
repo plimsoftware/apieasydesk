@@ -1,7 +1,7 @@
 npm run build
 git add .
 
-git commit -am "Take off local support in client"
+git commit -am "Updated Profile workflow"
 git push apieasydesk master
 ssh agenda.plimsoftware.pt \
   'git -C /home/miguel/apieasydesk/api/ ' \
