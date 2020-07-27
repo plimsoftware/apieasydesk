@@ -1,7 +1,7 @@
 npm run build
 git add .
 
-git commit -am "Associate Company to User"
+git commit -am "Updated return Client Company"
 git push apieasydesk master
 ssh agenda.plimsoftware.pt \
   'git -C /home/miguel/apieasydesk/api/ ' \

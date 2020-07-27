@@ -61,7 +61,7 @@ class ClientController {
       const clients = await Client.findAll({
         include: {
           model: Company,
-          attributes: ['name'],
+          attributes: ['name', 'defaultlocalsupport'],
         },
       });
       return res.json(clients);
@@ -76,7 +76,7 @@ class ClientController {
       const client = await Client.findByPk(req.params.id, {
         include: {
           model: Company,
-          attributes: ['name'],
+          attributes: ['name', 'defaultlocalsupport'],
         },
       });
 
