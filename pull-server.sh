@@ -1,7 +1,7 @@
 npm run build
 git add .
 
-git commit -am "Add client workflow"
+git commit -am "Associate Company to User"
 git push apieasydesk master
 ssh agenda.plimsoftware.pt \
   'git -C /home/miguel/apieasydesk/api/ ' \

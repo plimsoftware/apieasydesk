@@ -83,4 +83,8 @@
 
     return this;
   }
+
+  static associate(models) {
+    this.hasOne(models.Company, { sourceKey: 'companyid', foreignKey: 'id' });
+  }
 } exports.default = Client;

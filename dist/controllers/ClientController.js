@@ -49,12 +49,21 @@ class ClientController {
       if (companyid) {
         const team = await _Client2.default.findAll({
           where: { companyid },
+          include: {
+            model: _Company2.default,
+            attributes: ['name'],
+          },
         });
 
         return res.json(team);
       }
 
-      const clients = await _Client2.default.findAll();
+      const clients = await _Client2.default.findAll({
+        include: {
+          model: _Company2.default,
+          attributes: ['name'],
+        },
+      });
       return res.json(clients);
     } catch (e) {
       return res.json(null);
@@ -64,7 +73,12 @@ class ClientController {
   // Show
   async show(req, res) {
     try {
-      const client = await _Client2.default.findByPk(req.params.id);
+      const client = await _Client2.default.findByPk(req.params.id, {
+        include: {
+          model: _Company2.default,
+          attributes: ['name'],
+        },
+      });
 
       return res.json(client);
     } catch (e) {

@@ -83,4 +83,8 @@ export default class Client extends Model {
 
     return this;
   }
+
+  static associate(models) {
+    this.hasOne(models.Company, { sourceKey: 'companyid', foreignKey: 'id' });
+  }
 }
