@@ -10,6 +10,18 @@ module.exports = {
       type: Sequelize.STRING,
       allowNull: false,
     },
+    active: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+    },
+    createdby: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    updatedby: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
     created_at: {
       type: Sequelize.DATE,
       allowNull: false,
