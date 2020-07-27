@@ -1,17 +1,15 @@
 import { Router } from 'express';
 import clientController from '../controllers/ClientController';
 import loginRequiredAdmin from '../middlewares/loginRequiredAdmin';
+import loginRequired from '../middlewares/loginRequired';
 
 const router = new Router();
 
 
-router.get('/', loginRequiredAdmin, clientController.index); // Lista Clientes
-// router.get('/admin/:id', loginRequiredAdmin, clientController.showadmin); // Lista Cliente
-// router.delete('/admin/:id', loginRequiredAdmin, clientController.delete); // Apaga cliente
-
-
-// router.post('/', clientController.store); // Cria cliente
-// router.put('/:id', loginRequiredAdmin, clientController.update); // Update cliente
-// router.delete('/:id', loginRequiredAdmin, clientController.delete); // Apaga cliente
+router.get('/', loginRequired, clientController.index);
+router.post('/', loginRequired, clientController.store);
+router.get('/:id', loginRequired, clientController.show);
+router.put('/:id', loginRequired, clientController.update);
+router.delete('/:id', loginRequiredAdmin, clientController.delete);
 
 export default router;

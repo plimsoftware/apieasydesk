@@ -6,8 +6,9 @@ import Profile from '../models/Profile';
 import Company from '../models/Company';
 import Team from '../models/Team';
 import Teammember from '../models/Teammember';
+import Client from '../models/Client';
 
-const models = [User, UserProf, Profile, Company, Team, Teammember];
+const models = [User, UserProf, Profile, Company, Team, Teammember, Client];
 
 const connection = new Sequelize(databaseConfig);
 
