@@ -16,7 +16,18 @@ export default class Profile extends Model {
           },
         },
       },
-
+      createdby: {
+        type: Sequelize.STRING,
+        defaultValue: 'SYSTEM',
+      },
+      updatedby: {
+        type: Sequelize.STRING,
+        defaultValue: 'SYSTEM',
+      },
+      active: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: true,
+      },
     }, {
       sequelize,
       tableName: 'profile',

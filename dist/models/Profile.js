@@ -16,7 +16,18 @@
           },
         },
       },
-
+      createdby: {
+        type: _sequelize2.default.STRING,
+        defaultValue: 'SYSTEM',
+      },
+      updatedby: {
+        type: _sequelize2.default.STRING,
+        defaultValue: 'SYSTEM',
+      },
+      active: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: true,
+      },
     }, {
       sequelize,
       tableName: 'profile',
