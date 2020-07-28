@@ -28,6 +28,54 @@ export default class Profile extends Model {
         type: Sequelize.BOOLEAN,
         defaultValue: true,
       },
+      incmngt: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      reqmngt: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      chgmngt: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      admin: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      clientchg: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      clientfull: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      companychg: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      companyfull: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      catchg: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      catfull: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      userchg: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      userfull: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
     }, {
       sequelize,
       tableName: 'profile',

@@ -28,6 +28,54 @@
         type: _sequelize2.default.BOOLEAN,
         defaultValue: true,
       },
+      incmngt: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      reqmngt: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      chgmngt: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      admin: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      clientchg: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      clientfull: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      companychg: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      companyfull: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      catchg: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      catfull: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      userchg: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      userfull: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
     }, {
       sequelize,
       tableName: 'profile',
