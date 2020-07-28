@@ -76,6 +76,54 @@ export default class Profile extends Model {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
       },
+      inccreate: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      inccomplete: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      incclose: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      inccancel: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      reqcreate: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      reqcomplete: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      reqclose: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      reqcancel: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      chgcreate: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      chgcomplete: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      chgclose: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      chgcancel: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
     }, {
       sequelize,
       tableName: 'profile',

@@ -76,6 +76,54 @@
         type: _sequelize2.default.BOOLEAN,
         defaultValue: false,
       },
+      inccreate: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      inccomplete: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      incclose: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      inccancel: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      reqcreate: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      reqcomplete: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      reqclose: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      reqcancel: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      chgcreate: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      chgcomplete: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      chgclose: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
+      chgcancel: {
+        type: _sequelize2.default.BOOLEAN,
+        defaultValue: false,
+      },
     }, {
       sequelize,
       tableName: 'profile',

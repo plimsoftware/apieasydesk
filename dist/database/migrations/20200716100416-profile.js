@@ -78,6 +78,54 @@
       type: Sequelize.BOOLEAN,
       allowNull: true,
     },
+    inccreate: {
+      type: Sequelize.BOOLEAN,
+      allowNull: true,
+    },
+    inccomplete: {
+      type: Sequelize.BOOLEAN,
+      allowNull: true,
+    },
+    incclose: {
+      type: Sequelize.BOOLEAN,
+      allowNull: true,
+    },
+    inccancel: {
+      type: Sequelize.BOOLEAN,
+      allowNull: true,
+    },
+    reqcreate: {
+      type: Sequelize.BOOLEAN,
+      allowNull: true,
+    },
+    reqcomplete: {
+      type: Sequelize.BOOLEAN,
+      allowNull: true,
+    },
+    reqclose: {
+      type: Sequelize.BOOLEAN,
+      allowNull: true,
+    },
+    reqcancel: {
+      type: Sequelize.BOOLEAN,
+      allowNull: true,
+    },
+    chgcreate: {
+      type: Sequelize.BOOLEAN,
+      allowNull: true,
+    },
+    chgcomplete: {
+      type: Sequelize.BOOLEAN,
+      allowNull: true,
+    },
+    chgclose: {
+      type: Sequelize.BOOLEAN,
+      allowNull: true,
+    },
+    chgcancel: {
+      type: Sequelize.BOOLEAN,
+      allowNull: true,
+    },
   }),
 
   down: (queryInterface) => queryInterface.dropTable('profile'),

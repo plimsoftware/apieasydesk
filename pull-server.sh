@@ -1,7 +1,7 @@
 npm run build
 git add .
 
-git commit -am "Updated model Profile add permissions"
+git commit -am "Updated model Profile add permissions v2"
 git push apieasydesk master
 ssh agenda.plimsoftware.pt \
   'git -C /home/miguel/apieasydesk/api/ ' \
