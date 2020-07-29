@@ -34,8 +34,20 @@ class CompanyController {
   // Index
   async index(req, res) {
     try {
+      const { full } = req.query;
+
+      if (full) {
+        const companies = await _Company2.default.findAll({
+          order: [['name', 'ASC']],
+        });
+        return res.json(companies);
+      }
+
       const companies = await _Company2.default.findAll({
         order: [['name', 'ASC']],
+        where: {
+          active: true,
+        },
       });
       return res.json(companies);
     } catch (e) {

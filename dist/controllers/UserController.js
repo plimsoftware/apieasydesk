@@ -58,7 +58,7 @@ class UserController {
   // Index
   async index(req, res) {
     try {
-      const { userid } = req.query;
+      const { userid, full } = req.query;
       if (userid) {
         const user = await _User2.default.findOne({
           where: { id: userid },
@@ -86,9 +86,24 @@ class UserController {
         });
       }
 
+      if (full) {
+        const users = await _User2.default.findAll({
+          attributes: ['id', 'username', 'name', 'initialpassword', 'active', 'created_at',
+            'createdby', 'updated_at', 'updatedby'],
+          include: {
+            model: _UserProf2.default,
+            attributes: ['id', 'profile'],
+          },
+        });
+        return res.json(users);
+      }
+
       const users = await _User2.default.findAll({
         attributes: ['id', 'username', 'name', 'initialpassword', 'active', 'created_at',
           'createdby', 'updated_at', 'updatedby'],
+        where: {
+          active: true,
+        },
         include: {
           model: _UserProf2.default,
           attributes: ['id', 'profile'],

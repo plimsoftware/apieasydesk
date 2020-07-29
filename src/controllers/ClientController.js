@@ -32,7 +32,7 @@ class ClientController {
   // Index
   async index(req, res) {
     try {
-      const { companyid } = req.query;
+      const { companyid, full } = req.query;
 
       if (companyid) {
         const team = await Client.findAll({
@@ -46,10 +46,23 @@ class ClientController {
         return res.json(team);
       }
 
+      if (full) {
+        const clients = await Client.findAll({
+          include: {
+            model: Company,
+            attributes: ['name', 'defaultlocalsupport'],
+          },
+        });
+        return res.json(clients);
+      }
+
       const clients = await Client.findAll({
         include: {
           model: Company,
           attributes: ['name', 'defaultlocalsupport'],
+          where: {
+            active: true,
+          },
         },
       });
       return res.json(clients);

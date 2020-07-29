@@ -1,7 +1,7 @@
 npm run build
 git add .
 
-git commit -am "Updated model Profile add permissions v2"
+git commit -am "Create category workflow and active filter"
 git push apieasydesk master
 ssh agenda.plimsoftware.pt \
   'git -C /home/miguel/apieasydesk/api/ ' \

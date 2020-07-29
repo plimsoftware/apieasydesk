@@ -45,7 +45,18 @@ class UserProfController {
   // Index
   async index(req, res) {
     try {
-      const userprof = await _UserProf2.default.findAll();
+      const { full } = req.query;
+
+      if (full) {
+        const userprof = await _UserProf2.default.findAll();
+        return res.json(userprof);
+      }
+
+      const userprof = await _UserProf2.default.findAll({
+        where: {
+          active: true,
+        },
+      });
       return res.json(userprof);
     } catch (e) {
       return res.json(null);

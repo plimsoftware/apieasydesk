@@ -12,7 +12,7 @@ class ProfileController {
 
       if (myProfile) {
         return res.status(400).json({
-          errors: ['Company already exists.'],
+          errors: ['Profile already exists.'],
         });
       }
 
@@ -33,7 +33,19 @@ class ProfileController {
   // Index
   async index(req, res) {
     try {
-      const profile = await _Profile2.default.findAll({ order: [['name', 'ASC']] });
+      const { full } = req.query;
+
+      if (full) {
+        const profile = await _Profile2.default.findAll({ order: [['name', 'ASC']] });
+        return res.json(profile);
+      }
+
+      const profile = await _Profile2.default.findAll({
+        order: [['name', 'ASC']],
+        where: {
+          active: true,
+        },
+      });
       return res.json(profile);
     } catch (e) {
       return res.json(null);
@@ -63,8 +75,10 @@ class ProfileController {
           errors: ['Profile does not exist.'],
         });
       }
+      const myBody = req.body;
+      myBody.updatedby = req.userUser;
 
-      const newData = await profile.update(req.body);
+      const newData = await profile.update(myBody);
 
       return res.json(newData);
     } catch (e) {

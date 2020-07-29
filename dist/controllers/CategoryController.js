@@ -1,29 +1,16 @@
-import Company from '../models/Company';
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _Category = require('../models/Category'); var _Category2 = _interopRequireDefault(_Category);
 
-class CompanyController {
+class CategoryController {
   // Store
   async store(req, res) {
-    const { name } = req.body;
     try {
-      const findCompany = await Company.findOne({
-        where: {
-          name,
-        },
-      });
-
-      if (findCompany) {
-        return res.status(400).json({
-          errors: ['Company already exist.'],
-        });
-      }
-
       const myBody = req.body;
       myBody.createdby = req.userUser;
       myBody.updatedby = req.userUser;
 
-      const newCompany = await Company.create(myBody);
+      const newCategory = await _Category2.default.create(myBody);
 
-      return res.json(newCompany);
+      return res.json(newCategory);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
@@ -37,19 +24,19 @@ class CompanyController {
       const { full } = req.query;
 
       if (full) {
-        const companies = await Company.findAll({
-          order: [['name', 'ASC']],
+        const categories = await _Category2.default.findAll({
+          order: [['description', 'ASC']],
         });
-        return res.json(companies);
+        return res.json(categories);
       }
 
-      const companies = await Company.findAll({
-        order: [['name', 'ASC']],
+      const categories = await _Category2.default.findAll({
+        order: [['description', 'ASC']],
         where: {
           active: true,
         },
       });
-      return res.json(companies);
+      return res.json(categories);
     } catch (e) {
       return res.json(null);
     }
@@ -58,14 +45,14 @@ class CompanyController {
   // Show
   async show(req, res) {
     try {
-      const company = await Company.findOne({
+      const category = await _Category2.default.findOne({
         where: { id: req.params.id },
       });
 
-      return res.json(company);
+      return res.json(category);
     } catch (e) {
       return res.status(400).json({
-        errors: ['Company does not exist.'],
+        errors: ['Category does not exist.'],
       });
     }
   }
@@ -73,18 +60,18 @@ class CompanyController {
   // Update
   async update(req, res) {
     try {
-      const findCompany = await Company.findByPk(req.params.id);
+      const findCategory = await _Category2.default.findByPk(req.params.id);
 
-      if (!findCompany) {
+      if (!findCategory) {
         return res.status(400).json({
-          errors: ['Company does not exist.'],
+          errors: ['Category does not exist.'],
         });
       }
 
       const myBody = req.body;
       myBody.updatedby = req.userUser;
 
-      const newData = await findCompany.update(myBody);
+      const newData = await findCategory.update(myBody);
 
       return res.json(newData);
     } catch (e) {
@@ -97,15 +84,15 @@ class CompanyController {
   // Delete
   async delete(req, res) {
     try {
-      const company = await Company.findByPk(req.params.id);
+      const category = await _Category2.default.findByPk(req.params.id);
 
-      if (!company) {
+      if (!category) {
         return res.status(400).json({
-          errors: ['Company does not exist.'],
+          errors: ['Category does not exist.'],
         });
       }
 
-      await company.destroy();
+      await category.destroy();
       return res.json(null);
     } catch (e) {
       return res.status(400).json({ errors: e.name });
@@ -113,4 +100,4 @@ class CompanyController {
   }
 }
 
-export default new CompanyController();
+exports. default = new CategoryController();

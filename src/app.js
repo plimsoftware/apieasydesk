@@ -18,6 +18,7 @@ import clientRoutes from './routes/clientRoutes';
 import companyRoutes from './routes/companyRoutes';
 import teamRoutes from './routes/teamRoutes';
 import teammembersRoutes from './routes/teammembersRoutes';
+import categoryRoutes from './routes/categoryRoutes';
 
 const whitelist = [
   'http://localhost:3002',
@@ -60,6 +61,7 @@ class App {
     this.app.use('/company/', companyRoutes);
     this.app.use('/teams/', teamRoutes);
     this.app.use('/teammembers/', teammembersRoutes);
+    this.app.use('/category/', categoryRoutes);
   }
 }
 

@@ -14,6 +14,10 @@
       type: Sequelize.STRING,
       allowNull: false,
     },
+    defaultteam: {
+      type: Sequelize.STRING,
+      allowNull: true,
+    },
     description: {
       type: Sequelize.STRING,
       allowNull: false,

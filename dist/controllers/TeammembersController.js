@@ -40,9 +40,24 @@ class TeammemberController {
   // Index
   async index(req, res) {
     try {
+      const { full } = req.query;
+
+      if (full) {
+        const teammember = await _Teammember2.default.findAll({
+          include: {
+            attributes: ['name', 'username'],
+            model: _User2.default,
+          },
+        });
+        return res.json(teammember);
+      }
+
       const teammember = await _Teammember2.default.findAll({
         include: {
           attributes: ['name', 'username'],
+          where: {
+            active: true,
+          },
           model: _User2.default,
         },
       });

@@ -7,8 +7,9 @@ var _Company = require('../models/Company'); var _Company2 = _interopRequireDefa
 var _Team = require('../models/Team'); var _Team2 = _interopRequireDefault(_Team);
 var _Teammember = require('../models/Teammember'); var _Teammember2 = _interopRequireDefault(_Teammember);
 var _Client = require('../models/Client'); var _Client2 = _interopRequireDefault(_Client);
+var _Category = require('../models/Category'); var _Category2 = _interopRequireDefault(_Category);
 
-const models = [_User2.default, _UserProf2.default, _Profile2.default, _Company2.default, _Team2.default, _Teammember2.default, _Client2.default];
+const models = [_User2.default, _UserProf2.default, _Profile2.default, _Company2.default, _Team2.default, _Teammember2.default, _Client2.default, _Category2.default];
 
 const connection = new (0, _sequelize2.default)(_database2.default);
 
