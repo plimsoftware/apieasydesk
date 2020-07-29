@@ -26,12 +26,6 @@ export default class Category extends Model {
       defaultteam: {
         type: Sequelize.STRING,
         defaultValue: '',
-        validate: {
-          len: {
-            args: [3, 300],
-            msg: 'Default team name must have between 3 and 100 characters',
-          },
-        },
       },
       createdby: {
         type: Sequelize.STRING,
@@ -55,5 +49,9 @@ export default class Category extends Model {
     });
 
     return this;
+  }
+
+  static associate(models) {
+    this.hasMany(models.Category, { foreignKey: 'parent' });
   }
 }

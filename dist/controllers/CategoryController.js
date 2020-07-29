@@ -26,6 +26,9 @@ class CategoryController {
       if (full) {
         const categories = await _Category2.default.findAll({
           order: [['description', 'ASC']],
+          where: {
+            parent: 0,
+          },
         });
         return res.json(categories);
       }
@@ -34,6 +37,7 @@ class CategoryController {
         order: [['description', 'ASC']],
         where: {
           active: true,
+          parent: 0,
         },
       });
       return res.json(categories);
@@ -47,6 +51,15 @@ class CategoryController {
     try {
       const category = await _Category2.default.findOne({
         where: { id: req.params.id },
+        include: [
+          {
+            model: _Category2.default,
+            include: [
+              {
+                model: _Category2.default,
+              }],
+          },
+        ],
       });
 
       return res.json(category);

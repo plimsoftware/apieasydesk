@@ -26,12 +26,6 @@
       defaultteam: {
         type: _sequelize2.default.STRING,
         defaultValue: '',
-        validate: {
-          len: {
-            args: [3, 300],
-            msg: 'Default team name must have between 3 and 100 characters',
-          },
-        },
       },
       createdby: {
         type: _sequelize2.default.STRING,
@@ -55,5 +49,9 @@
     });
 
     return this;
+  }
+
+  static associate(models) {
+    this.hasMany(models.Category, { foreignKey: 'parent' });
   }
 } exports.default = Category;
