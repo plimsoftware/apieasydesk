@@ -1,7 +1,7 @@
 npm run build
 git add .
 
-git commit -am "change category parent nest"
+git commit -am "add get team not local "
 git push apieasydesk master
 ssh agenda.plimsoftware.pt \
   'git -C /home/miguel/apieasydesk/api/ ' \
