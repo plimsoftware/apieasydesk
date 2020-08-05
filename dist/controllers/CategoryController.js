@@ -21,13 +21,24 @@ class CategoryController {
   // Index
   async index(req, res) {
     try {
-      const { full } = req.query;
+      const { full, type } = req.query;
 
       if (full) {
         const categories = await _Category2.default.findAll({
           order: [['description', 'ASC']],
           where: {
             parent: 0,
+          },
+        });
+        return res.json(categories);
+      }
+
+      if (type) {
+        const categories = await _Category2.default.findAll({
+          order: [['description', 'ASC']],
+          where: {
+            parent: 0,
+            type,
           },
         });
         return res.json(categories);

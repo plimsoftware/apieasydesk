@@ -61,6 +61,7 @@ class UserController {
       const { userid, full } = req.query;
       if (userid) {
         const user = await User.findOne({
+          order: [['username', 'ASC']],
           where: { id: userid },
           include: {
             model: UserProf,
@@ -90,6 +91,7 @@ class UserController {
         const users = await User.findAll({
           attributes: ['id', 'username', 'name', 'initialpassword', 'active', 'created_at',
             'createdby', 'updated_at', 'updatedby'],
+          order: [['username', 'ASC']],
           include: {
             model: UserProf,
             attributes: ['id', 'profile'],
@@ -101,6 +103,7 @@ class UserController {
       const users = await User.findAll({
         attributes: ['id', 'username', 'name', 'initialpassword', 'active', 'created_at',
           'createdby', 'updated_at', 'updatedby'],
+        order: [['username', 'ASC']],
         where: {
           active: true,
         },
@@ -119,6 +122,7 @@ class UserController {
   async show(req, res) {
     try {
       const user = await User.findOne({
+        order: [['username', 'ASC']],
         where: { username: req.params.id },
         include: {
           model: UserProf,
