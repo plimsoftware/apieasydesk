@@ -1,7 +1,7 @@
 npm run build
 git add .
 
-git commit -am "created incident and history flow"
+git commit -am "Update incident search by team and username"
 git push apieasydesk master
 ssh agenda.plimsoftware.pt \
   'git -C /home/miguel/apieasydesk/api/ ' \

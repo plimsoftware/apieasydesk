@@ -27,6 +27,37 @@ class IncidentController {
   // Index
   async index(req, res) {
     try {
+      const { assignedteam, assigneduser } = req.query;
+
+      if (assignedteam) {
+        console.log(assignedteam);
+        const team = await _Incident2.default.findAll({
+          where: { assignedteam },
+          include: [
+            {
+              model: _IncidentHist2.default,
+            },
+          ],
+        });
+
+        return res.json(team);
+      }
+
+      if (assigneduser) {
+        console.log(assigneduser);
+        const team = await _Incident2.default.findAll({
+          where: { assigneduser },
+          include: [
+            {
+              model: _IncidentHist2.default,
+            },
+          ],
+        });
+
+        return res.json(team);
+      }
+      console.log('cheguei aqui');
+
       const incidents = await _Incident2.default.findAll();
       return res.json(incidents);
     } catch (e) {
