@@ -19,6 +19,8 @@ var _companyRoutes = require('./routes/companyRoutes'); var _companyRoutes2 = _i
 var _teamRoutes = require('./routes/teamRoutes'); var _teamRoutes2 = _interopRequireDefault(_teamRoutes);
 var _teammembersRoutes = require('./routes/teammembersRoutes'); var _teammembersRoutes2 = _interopRequireDefault(_teammembersRoutes);
 var _categoryRoutes = require('./routes/categoryRoutes'); var _categoryRoutes2 = _interopRequireDefault(_categoryRoutes);
+var _incidentRoutes = require('./routes/incidentRoutes'); var _incidentRoutes2 = _interopRequireDefault(_incidentRoutes);
+var _incidentHistRoutes = require('./routes/incidentHistRoutes'); var _incidentHistRoutes2 = _interopRequireDefault(_incidentHistRoutes);
 
 const whitelist = [
   'http://localhost:3002',
@@ -62,6 +64,8 @@ class App {
     this.app.use('/teams/', _teamRoutes2.default);
     this.app.use('/teammembers/', _teammembersRoutes2.default);
     this.app.use('/category/', _categoryRoutes2.default);
+    this.app.use('/incident/', _incidentRoutes2.default);
+    this.app.use('/incidenthist/', _incidentHistRoutes2.default);
   }
 }
 

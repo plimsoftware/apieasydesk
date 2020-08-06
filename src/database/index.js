@@ -8,8 +8,21 @@ import Team from '../models/Team';
 import Teammember from '../models/Teammember';
 import Client from '../models/Client';
 import Category from '../models/Category';
+import Incident from '../models/Incident';
+import IncidentHist from '../models/IncidentHist';
 
-const models = [User, UserProf, Profile, Company, Team, Teammember, Client, Category];
+const models = [
+  User,
+  UserProf,
+  Profile,
+  Company,
+  Team,
+  Teammember,
+  Client,
+  Category,
+  Incident,
+  IncidentHist,
+];
 
 const connection = new Sequelize(databaseConfig);
 

@@ -20,11 +20,11 @@ module.exports = {
     },
     categorynv1: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     categorynv2: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     categorynv3: {
       type: Sequelize.STRING,
@@ -44,7 +44,7 @@ module.exports = {
     },
     assigneduser: {
       type: Sequelize.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     assignedteam: {
       type: Sequelize.STRING,
@@ -61,11 +61,26 @@ module.exports = {
     email: {
       type: Sequelize.STRING,
       allowNull: false,
-      unique: true,
     },
     phone: {
       type: Sequelize.INTEGER,
       allowNull: true,
+    },
+    clientid: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+    reopenings: {
+      type: Sequelize.INTEGER,
+      allowNull: true,
+    },
+    reclassified: {
+      type: Sequelize.BOOLEAN,
+      allowNull: true,
+    },
+    companyid: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
     },
     created_at: {
       type: Sequelize.DATE,

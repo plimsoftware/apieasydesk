@@ -1,7 +1,7 @@
 npm run build
 git add .
 
-git commit -am "add category filter type"
+git commit -am "created incident and history flow"
 git push apieasydesk master
 ssh agenda.plimsoftware.pt \
   'git -C /home/miguel/apieasydesk/api/ ' \
