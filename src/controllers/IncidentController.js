@@ -29,7 +29,6 @@ class IncidentController {
     try {
       const { assignedteam, assigneduser } = req.query;
       if (assignedteam) {
-        console.log(assignedteam);
         const team = await Incident.findAll({
           where: { assignedteam },
           include: [
