@@ -1,7 +1,7 @@
 npm run build
 git add .
 
-git commit -am "Update teammember searchv2"
+git commit -am "test two git"
 git push apieasydesk master
 ssh agenda.plimsoftware.pt \
   'git -C /home/miguel/apieasydesk/api/ ' \
